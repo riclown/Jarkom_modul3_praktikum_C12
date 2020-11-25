@@ -24,7 +24,6 @@
 ## DHCP (Soal 1 - 6)
 
 * *IP TUBAN* C12 = 10.151.77.108
-* Konfigurasi `janganlupa-ta.yyy.pw` menjadi `janganlupa-ta.c12.pw` sesuai dengan nama kelompok.
 
 ## Soal 1
 
@@ -198,7 +197,7 @@ Restart network dengan mengetikkan `service networking restart` di setiap UML. K
 
 ## Soal 2
 
-* Meng-install dhcp server di **TUBAN** dengan cara `apt-get update` lalu `apt-get install isc-dhcp-server`. Setelah itu setting pada **TUBAN** dengan mengetikkan
+* Meng-install `dhcp server` di **TUBAN** dengan cara `apt-get update` lalu `apt-get install isc-dhcp-server`. Setelah itu setting pada **TUBAN** dengan mengetikkan
 
 ```
 nano /etc/default/isc-dhcp-server
@@ -224,7 +223,7 @@ Pada UML **TUBAN** buka file *dhcpd.conf* dengan menetikkan `nano /etc/dhcp/dhcp
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/3.1.jpg)
 
-Lalu pada client 1 dapat mencoba `ifconfig` untuk cek IP
+Lalu pada client subnet 1 dapat mencoba `ifconfig` untuk cek IP
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/3.2.jpg)
 
@@ -234,7 +233,7 @@ Pada UML **TUBAN** buka file *dhcpd.conf* dengan menetikkan `nano /etc/dhcp/dhcp
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/4.0.jpg)
 
-Lalu pada client 1 dapat mencoba `ifconfig` untuk cek IP
+Lalu pada client subnet 3 dapat mencoba `ifconfig` untuk cek IP
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/4.1.jpg)
 
@@ -273,23 +272,173 @@ cat /etc/resolv.conf
 
 ## Soal 6
 
+Pada UML **TUBAN** buka file *dhcpd.conf* dengan menetikkan `nano /etc/dhcp/dhcpd.conf`, dan tambahkan pada script di bagian `default-lease-time` sesuai soal yaitu client di subnet 1 selama 5 menit dan client di subnet 3 selama 10 menit.
+
+* 5 menit = `60 s * 5` = 300
+* 10 menit = `60 s * 10` = 600
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/6.0.jpg)
 
 ## Proxy (Soal 7 - 12)
 
+* Konfigurasi `janganlupa-ta.yyy.pw` menjadi `janganlupa-ta.c12.pw` sesuai dengan nama kelompok.
+* Konfigurasi `userta_yyy` menjadi `userta_c12` sesuai dengan nama kelompok.
+* Konfigurasi ` inipassw0rdta_yyy` menjadi ` inipassw0rdta_c12` sesuai dengan nama kelompok.
+* Susunan file config keseluruhan
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/7.0.jpg)
 
 ## Soal 7
 
+Meng-install `squid` di **MOJOKERTO** dengan cara `apt-get update` lalu 
+
+```
+apt-get install isc-dhcp-server
+```
+
+dan meng-install `apache2-utils`
+
+```
+apt-get install apache2-utils
+```
+
+Backup terlebih dahulu file konfigurasi default yang disediakan Squid.
+
+```
+mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
+```
+
+Buat konfigurasi baru dengan mengetikkan
+
+```
+nano /etc/squid/squid.conf
+```
+
+Kemudian, pada file config yang baru, ketikkan script:
+
+```
+http_port 8080
+visible_hostname mojokerto
+```
+
+Setelah itu buat user dengan nama **userta_c12** dan password  pada **MOJOKERTO** dengan mengetikkan:
+
+```
+htpasswd -c /etc/squid/passwd userta_c12
+```
+
+Edit konfigurasi squid menjadi:
+
+```
+http_port 8080
+visible_hostname mojokerto
+
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS
+```
+
+Restart squid `service squid restart`, dan berikutnya ubah **proxy** pada *web browser* ataupun *OS*
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/7.2.jpg)
+
+Selanjutnya dapat mencoba untuk mengakses situs tertentu seperti `google.com`
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/7.1.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/7.3.jpg)
 
 ## Soal 8
 
+Pada UML **MOJOKERTO** buat file konfigurasi dengan megetikkan
+
+```
+nano /etc/squid/acl.conf
+```
+dan tambahkan
+
+```
+acl KERTA time TW 13:00-18:00
+```
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.1.jpg)
+
+Buka kembali file `squid.conf` dengan mengetikkan
+
+```
+include /etc/squid/acl.conf
+
+http_port 8080
+http_access allow USERS KERTA
+http_access deny all
+visible_hostname mojokerto
+```
+
+Simpan file tersebut. Kemudian `service squid restart`. Lalu conba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.2.jpg)
 
 ## Soal 9
+
+Sama halnya dengan nomor 8. Pada UML **MOJOKERTO** buat file konfigurasi dengan megetikkan
+
+```
+nano /etc/squid/acl.conf
+```
+dan tambahkan
+
+```
+acl BIMTA time TWH 21:00-23:59
+acl BIMTA time WHF 00:00-09:00
+```
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/9.1.jpg)
+
+Buka kembali file `squid.conf` dengan mengetikkan
+
+```
+include /etc/squid/acl.conf
+
+http_port 8080
+http_access allow USERS BIMTA
+http_access deny all
+visible_hostname mojokerto
+```
+
+Simpan file tersebut. Kemudian `service squid restart`. Lalu conba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.2.jpg)
 
 
 ## Soal 10
 
+Buka file `ban.acl` dengan mengetikkan
+
+```
+nano /etc/squid/ban.acl
+```
+
+Lalu tambahkan pada file tersebut `google.com`. hal ini dimaskuudkan dengan soal yaitu jika *user* mengetikkan `google.com` makan me-*redirect* ke `monta.if.its.ac.id`.
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.0.jpg)
+
+Buka file `squid.conf` dengan mengetikkan `nano /etc/squid/squid.conf`, dan tambahkan script berikut:
+
+```
+acl NOO url_regex "/etc/squid/ban.acl"
+deny_info http://monta.if.its.ac.id/ NOO
+http_access deny NOO
+```
+
+Restart squid `service squid restart`, lalu masukkan `google.com` pada search bar, maka akan teralihkan ke `monta.if.its.ac.id`. (Berlaku jika sesuai dengan jam yang telah ditetapkan).
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.2.jpg)
 
 ## Soal 11
+
 
 
 ## Soal 12
