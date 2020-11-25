@@ -497,10 +497,10 @@ Lakukan perintah pada MALANG. Isikan seperti berikut:
 nano /etc/bind/named.conf.local
 ```
 
-Isikan configurasi domain jarkom2020.com sesuai dengan syntax berikut:
+Isikan configurasi domain janganlupa-ta.c12.pw sesuai dengan syntax berikut:
 ```
 zone "janganlupa-ta.c12.pw" {
-  type master;
+ 	type master;
 	file "/etc/bind/jarkom/janganlupa-ta.c12.pw";
 };
 ```
