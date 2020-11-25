@@ -23,7 +23,7 @@
 
 ## DHCP (Soal 1 - 6)
 
-* *IP TUBAN* C12 = 10.151.77.108
+* IP TUBAN C12 = 10.151.77.108
 
 ## Soal 1
 
@@ -439,11 +439,101 @@ Restart squid `service squid restart`, lalu masukkan `google.com` pada search ba
 
 ## Soal 11
 
+Buka folder `cd /usr/share/squid/errors/en` dan download error page dengan cara `wget 10.151.36.202/ERR_ACCESS_DENIED`. Lalu tampilannya akan sebagai berikut dengan `ls`
 
+![MAAF FILE BELUM TERSEDIA](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.100.jpg)
+
+Ganti file `ERR_ACCESSS_DENIED` dan rename file yang baru saja didownload yaitu `ERR_ACCESSS_DENIED.1` menjadi `ERR_ACCESSS_DENIED`, dengan cara:
+
+```
+rm ERR_ACCESSS_DENIED
+mv ERR_ACCESSS_DENIED.1 ERR_ACCESSS_DENIED
+```
+
+Buka file `restrict-sites.acl` dengan cara 
+
+```
+nano /etc/squid/restrict-sites.acl
+```
+
+Lalu tambahkanalamat url yang hendak diblok, contohnya dalam hal ini `elearning.if.its.ac.id` dan `tempo.co`. 
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.2.jpg)
+
+Buka kembali konfigurasi `squid.conf` dengan mengetikkan `nano /etc/squid/squid.conf`. Ubah file konfigurasi squid menjadi seperti berikut ini.
+
+```
+http_port 8080
+visible_hostname mojokerto
+
+acl BLACKLISTS dstdomain "/etc/squid/restrict-sites.acl"
+http_access deny BLACKLISTS
+http_access allow all
+```
+
+Restart squid `service squid restart` dan jalankan alamat URL yang telah ditambahkan sebelumnya di file `restrict-sites.acl`.
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.0.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.1.jpg)
 
 ## Soal 12
 
+Buka **MALANG** dan update package lists dengan menjalankan command:
 
+```
+apt-get update
+```
+
+Setelah melakukan update silahkan install aplikasi bind9 pada MALANG dengan perintah:
+
+```
+apt-get install bind9 -y
+```
+
+Lakukan perintah pada MALANG. Isikan seperti berikut:
+
+```
+nano /etc/bind/named.conf.local
+```
+
+Isikan configurasi domain jarkom2020.com sesuai dengan syntax berikut:
+```
+zone "janganlupa-ta.c12.pw" {
+  type master;
+	file "/etc/bind/jarkom/janganlupa-ta.c12.pw";
+};
+```
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.0.jpg)
+
+Buat folder jarkom di dalam /etc/bind
+```
+mkdir /etc/bind/jarkom
+```
+
+Copykan file db.local pada path /etc/bind ke dalam folder jarkom yang baru saja dibuat dan ubah namanya menjadi janganlupa-ta.c12.pw
+```
+cp /etc/bind/db.local /etc/bind/jarkom/janganlupa-ta.c12.pw
+```
+
+Kemudian buka file janganlupa-ta.c12.pw dan edit seperti gambar berikut dengan IP MOJOKERTO masing-masing kelompok:
+```
+nano /etc/bind/jarkom/janganlupa-ta.c12.pw
+```
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.1.jpg)
+
+Restart bind9 dengan perintah
+```
+service bind9 restart
+```
+
+Ganti proxy pada *web browser* atau *OS* yang sebelumnya `10.151.77.107` menjadi `janganlupa-ta.c12.pw`, dengan port yaitu 8080.
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.4.jpg)
+
+Lalu coba periksa proxy yang telah diubah tersebut
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.1.jpg)
 
 ### Kendala
 * Susunan logic *config* yang sempat membingungkan, sehingga beberapa nomor sempat tidak bisa berjalan.
