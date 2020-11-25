@@ -206,7 +206,7 @@ nano /etc/default/isc-dhcp-server
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/2.0.jpg)
 
-* Meng-install dhcp relay di **SURABAYA** dengan cara `apt-get update` lalu `apt-get install isc-dhcp-relay`. Setelah itu setting pada **SURABAYA** dengan mengetikkan
+* Meng-install `dhcp relay` di **SURABAYA** dengan cara `apt-get update` lalu `apt-get install isc-dhcp-relay`. Setelah itu setting pada **SURABAYA** dengan mengetikkan
 
 ```
 nano /etc/default/isc-dhcp-relay
@@ -485,13 +485,13 @@ Buka **MALANG** dan update package lists dengan menjalankan command:
 apt-get update
 ```
 
-Setelah melakukan update silahkan install aplikasi bind9 pada MALANG dengan perintah:
+Setelah melakukan update silahkan install aplikasi `bind9` pada **MALANG** dengan perintah:
 
 ```
 apt-get install bind9 -y
 ```
 
-Lakukan perintah pada MALANG. Isikan seperti berikut:
+Lakukan perintah pada **MALANG**. Isikan seperti berikut:
 
 ```
 nano /etc/bind/named.conf.local
@@ -506,7 +506,7 @@ zone "janganlupa-ta.c12.pw" {
 ```
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.0.jpg)
 
-Buat folder jarkom di dalam /etc/bind
+Buat folder jarkom di dalam `/etc/bind`
 ```
 mkdir /etc/bind/jarkom
 ```
