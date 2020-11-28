@@ -220,7 +220,7 @@ Lalu pastikan seluruh *client* menggunakan konfigurasi IP DHCP.
 
 ## Soal 3
 
-Pada UML **TUBAN** buka file *dhcpd.conf* dengan menetikkan `nano /etc/dhcp/dhcpd.conf`, dan tambahkan range pada script sesuai soal
+Pada UML **TUBAN** buka file *dhcpd.conf* dengan mengetikkan `nano /etc/dhcp/dhcpd.conf`, dan tambahkan range pada script sesuai soal
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/3.1.jpg)
 
@@ -257,7 +257,7 @@ service isc-dhcp-relay restart
 dan dhcp-server pada **TUBAN** dengan mengetikkan 
 
 ```
-service isc-dhcp-relay restart
+service isc-dhcp-server restart
 ```
 
 Ketikkan `service networking restart` pada setiap UML Client dan masukkan `ifconfig`. Periksa /etc/resolv.conf dengan menggunakan perintah
@@ -273,7 +273,7 @@ cat /etc/resolv.conf
 
 ## Soal 6
 
-Pada UML **TUBAN** buka file *dhcpd.conf* dengan menetikkan `nano /etc/dhcp/dhcpd.conf`, dan tambahkan pada script di bagian `default-lease-time` sesuai soal yaitu client di subnet 1 selama 5 menit dan client di subnet 3 selama 10 menit.
+Pada UML **TUBAN** buka file *dhcpd.conf* dengan mengetikkan `nano /etc/dhcp/dhcpd.conf`, dan tambahkan pada script di bagian `default-lease-time` sesuai soal yaitu client di subnet 1 selama 5 menit dan client di subnet 3 selama 10 menit.
 
 * 5 menit = `60 s * 5` = 300
 * 10 menit = `60 s * 10` = 600
