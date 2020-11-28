@@ -422,7 +422,7 @@ Buka file `ban.acl` dengan mengetikkan
 nano /etc/squid/ban.acl
 ```
 
-Lalu tambahkan pada file tersebut `google.com`. hal ini dimaskuudkan dengan soal yaitu jika *user* mengetikkan `google.com` makan me-*redirect* ke `monta.if.its.ac.id`.
+Lalu tambahkan pada file tersebut `google.com`. hal ini dimaskuudkan dengan soal yaitu jika *user* mengetikkan `google.com` maka akan me-*redirect* ke `monta.if.its.ac.id`.
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.0.jpg)
 
