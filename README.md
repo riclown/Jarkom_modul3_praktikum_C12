@@ -457,7 +457,7 @@ Buka file `restrict-sites.acl` dengan cara
 nano /etc/squid/restrict-sites.acl
 ```
 
-Lalu tambahkanalamat url yang hendak diblok, contohnya dalam hal ini `elearning.if.its.ac.id` dan `tempo.co`. 
+Lalu tambahkan alamat url yang hendak diblok, contohnya dalam hal ini `elearning.if.its.ac.id` dan `tempo.co`. 
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.2.jpg)
 
@@ -532,7 +532,7 @@ Ganti proxy pada *web browser* atau *OS* yang sebelumnya `10.151.77.107` menjadi
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.4.jpg)
 
-Lalu coba periksa proxy yang telah diubah tersebut
+Lalu coba periksa proxy yang telah diubah tersebut, contohnya dengan mengakses *website* apapun, seperti `bing.com`
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.1.jpg)
 
