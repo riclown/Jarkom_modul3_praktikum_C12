@@ -394,7 +394,7 @@ dan tambahkan
 
 ```
 acl BIMTA time TWH 21:00-23:59
-acl BIMTA time WHF 00:00-09:00
+acl BIMTA1 time WHF 00:00-09:00
 ```
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/9.2.jpg)
