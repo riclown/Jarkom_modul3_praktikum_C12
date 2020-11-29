@@ -195,7 +195,7 @@ gateway 192.168.1.1
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/1.8.jpg)
 
-Restart network dengan mengetikkan `service networking restart` di setiap UML. Ketikkan `iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16` pada router **SURABAYA**. IP Tables dapat dimasukkan ke dalam *script*, dalam hal ini, nama script berupa `table.sh`.
+Restart network dengan mengetikkan `service networking restart` di setiap UML. Ketikkan `iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16` dan `iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.1.0/16` pada router **SURABAYA**. IP Tables dapat dimasukkan ke dalam *script*, dalam hal ini, nama script berupa `table.sh`.
 
 ## Soal 2
 
@@ -381,7 +381,7 @@ visible_hostname mojokerto
 
 Simpan file tersebut. Kemudian `service squid restart`. Lalu conba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.2.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.5.jpg)
 
 ## Soal 9
 
@@ -412,7 +412,7 @@ visible_hostname mojokerto
 
 Simpan file tersebut. Kemudian `service squid restart`. Lalu coba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.2.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.5.jpg)
 
 
 ## Soal 10
@@ -505,7 +505,7 @@ zone "janganlupa-ta.c12.pw" {
 	file "/etc/bind/jarkom/janganlupa-ta.c12.pw";
 };
 ```
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.0.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.8.jpg)
 
 Buat folder jarkom di dalam `/etc/bind`
 ```
