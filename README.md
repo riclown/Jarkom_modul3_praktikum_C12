@@ -23,7 +23,8 @@
 
 ## DHCP (Soal 1 - 6)
 
-* IP TUBAN C12 = 10.151.77.108
+* IP TUBAN C12 = `10.151.77.108`
+* IP eth3 SURABAYA C12 = `10.151.77.105`
 
 ## Soal 1
 
@@ -354,7 +355,7 @@ Selanjutnya dapat mencoba untuk mengakses situs tertentu seperti `google.com`
 
 ## Soal 8
 
-Pada UML **MOJOKERTO** buat file konfigurasi dengan megetikkan
+Pada UML **MOJOKERTO** buat file konfigurasi dengan mengetikkan
 
 ```
 nano /etc/squid/acl.conf
@@ -384,7 +385,7 @@ Simpan file tersebut. Kemudian `service squid restart`. Lalu conba akses situs a
 
 ## Soal 9
 
-Sama halnya dengan nomor 8. Pada UML **MOJOKERTO** buat file konfigurasi dengan megetikkan
+Sama halnya dengan nomor 8. Pada UML **MOJOKERTO** buat file konfigurasi dengan mengetikkan
 
 ```
 nano /etc/squid/acl.conf
@@ -409,7 +410,7 @@ http_access deny all
 visible_hostname mojokerto
 ```
 
-Simpan file tersebut. Kemudian `service squid restart`. Lalu conba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
+Simpan file tersebut. Kemudian `service squid restart`. Lalu coba akses situs apapun, contoh `detik.com`, jika sesuai dengan jam yang ditentukan, maka situs `detik.com` akan terbuka, jika tidak sesuai dengan jam yang telah ditentukan, maka situs tersebut tidak dapat diakses.
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.2.jpg)
 
@@ -422,7 +423,7 @@ Buka file `ban.acl` dengan mengetikkan
 nano /etc/squid/ban.acl
 ```
 
-Lalu tambahkan pada file tersebut `google.com`. hal ini dimaskuudkan dengan soal yaitu jika *user* mengetikkan `google.com` maka akan me-*redirect* ke `monta.if.its.ac.id`.
+Lalu tambahkan pada file tersebut `google.com`. hal ini dimaksudkan dengan soal yaitu jika *user* mengetikkan `google.com` maka akan me-*redirect* ke `monta.if.its.ac.id`.
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.0.jpg)
 
@@ -442,7 +443,7 @@ Restart squid `service squid restart`, lalu masukkan `google.com` pada search ba
 
 Buka folder `cd /usr/share/squid/errors/en` dan download error page dengan cara `wget 10.151.36.202/ERR_ACCESS_DENIED`. Lalu tampilannya akan sebagai berikut dengan `ls`
 
-![MAAF FILE BELUM TERSEDIA](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/10.100.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.3.jpg)
 
 Ganti file `ERR_ACCESSS_DENIED` dan rename file yang baru saja didownload yaitu `ERR_ACCESSS_DENIED.1` menjadi `ERR_ACCESSS_DENIED`, dengan cara:
 
@@ -497,7 +498,7 @@ Lakukan perintah pada **MALANG**. Isikan seperti berikut:
 nano /etc/bind/named.conf.local
 ```
 
-Isikan configurasi domain janganlupa-ta.c12.pw sesuai dengan syntax berikut:
+Isikan konfigurasi domain janganlupa-ta.c12.pw sesuai dengan syntax berikut:
 ```
 zone "janganlupa-ta.c12.pw" {
  	type master;
@@ -534,7 +535,7 @@ Ganti proxy pada *web browser* atau *OS* yang sebelumnya `10.151.77.107` menjadi
 
 Lalu coba periksa proxy yang telah diubah tersebut, contohnya dengan mengakses *website* apapun, seperti `bing.com`
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.1.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.7.jpg)
 
 ### Kendala
 * Susunan logic *config* yang sempat membingungkan, sehingga beberapa nomor sempat tidak bisa berjalan.
