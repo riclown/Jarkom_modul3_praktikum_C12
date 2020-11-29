@@ -537,5 +537,9 @@ Lalu coba periksa proxy yang telah diubah tersebut, contohnya dengan mengakses *
 
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.7.jpg)
 
+atau lakukan ping pada *Command Prompt*
+
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.6.jpg)
+
 ### Kendala
 * Susunan logic *squid config* yang sempat membingungkan, sehingga beberapa nomor sempat tidak bisa berjalan.
