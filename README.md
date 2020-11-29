@@ -366,7 +366,7 @@ dan tambahkan
 acl KERTA time TW 13:00-18:00
 ```
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.1.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/8.0.jpg)
 
 Buka kembali file `squid.conf` dengan mengetikkan
 
@@ -397,7 +397,7 @@ acl BIMTA time TWH 21:00-23:59
 acl BIMTA time WHF 00:00-09:00
 ```
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/9.1.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/9.2.jpg)
 
 Buka kembali file `squid.conf` dengan mengetikkan
 
@@ -460,7 +460,7 @@ nano /etc/squid/restrict-sites.acl
 
 Lalu tambahkan alamat url yang hendak diblok, contohnya dalam hal ini `elearning.if.its.ac.id` dan `tempo.co`. 
 
-![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.2.jpg)
+![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/11.6.jpg)
 
 Buka kembali konfigurasi `squid.conf` dengan mengetikkan `nano /etc/squid/squid.conf`. Ubah file konfigurasi squid menjadi seperti berikut ini.
 
@@ -538,4 +538,4 @@ Lalu coba periksa proxy yang telah diubah tersebut, contohnya dengan mengakses *
 ![Img](https://github.com/riclown/Jarkom_modul3_praktikum_C12/blob/main/img/12.7.jpg)
 
 ### Kendala
-* Susunan logic *config* yang sempat membingungkan, sehingga beberapa nomor sempat tidak bisa berjalan.
+* Susunan logic *squid config* yang sempat membingungkan, sehingga beberapa nomor sempat tidak bisa berjalan.
