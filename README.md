@@ -360,7 +360,7 @@ Pada UML **MOJOKERTO** buat file konfigurasi dengan mengetikkan
 ```
 nano /etc/squid/acl.conf
 ```
-dan tambahkan
+dan tambahkan (Pada gambar di bawah tertulis `TWA 10:00-18:00` karena keperluan demo)
 
 ```
 acl KERTA time TW 13:00-18:00
